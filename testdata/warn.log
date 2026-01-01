@@ -1,0 +1,43 @@
+g++ -Wall -Wextra -std=c++17 -Iexternal/doctest/doctest/ -Iexternal/fakeit/single_header/doctest -Iexternal/nanobench/src/include -Iexternal/stb -Iexternal/json/include/ -c test.cpp -o test.o
+test.cpp:161:17: warning: ‘template<class _Arg, class _Result> struct std::unary_function’ is deprecated [-Wdeprecated-declarations]
+  161 |     public std::unary_function<std::string, std::string::size_type>
+      |                 ^~~~~~~~~~~~~~
+In file included from /usr/include/c++/13/string:49,
+                 from /usr/include/c++/13/bits/locale_classes.h:40,
+                 from /usr/include/c++/13/bits/ios_base.h:41,
+                 from /usr/include/c++/13/ios:44,
+                 from /usr/include/c++/13/istream:40,
+                 from /usr/include/c++/13/fstream:40,
+                 from external/doctest/doctest/doctest.h:3162,
+                 from test.cpp:4:
+/usr/include/c++/13/bits/stl_function.h:117:12: note: declared here
+  117 |     struct unary_function
+      |            ^~~~~~~~~~~~~~
+test.cpp:177:17: warning: ‘template<class _Arg1, class _Arg2, class _Result> struct std::binary_function’ is deprecated [-Wdeprecated-declarations]
+  177 |     public std::binary_function<FPType, FPType, FPType> {
+      |                 ^~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_function.h:131:12: note: declared here
+  131 |     struct binary_function
+      |            ^~~~~~~~~~~~~~~
+test.cpp: In function ‘void DOCTEST_ANON_FUNC_33()’:
+test.cpp:205:33: warning: ‘std::const_mem_fun_ref_t<_Ret, _Tp> std::mem_fun_ref(_Ret (_Tp::*)() const) [with _Ret = long unsigned int; _Tp = __cxx11::basic_string<char>]’ is deprecated: use 'std::mem_fn' instead [-Wdeprecated-declarations]
+  205 |                 std::mem_fun_ref(&std::string::size));
+      |                 ~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~
+/usr/include/c++/13/bits/stl_function.h:1389:5: note: declared here
+ 1389 |     mem_fun_ref(_Ret (_Tp::*__f)() const)
+      |     ^~~~~~~~~~~
+test.cpp: In function ‘void DOCTEST_ANON_FUNC_83()’:
+test.cpp:523:36: warning: left shift count >= width of type [-Wshift-count-overflow]
+  523 |     unsigned short short2 = short1 << 48;
+      |                             ~~~~~~~^~~~~
+test.cpp: In function ‘void DOCTEST_ANON_FUNC_115()’:
+test.cpp:628:10: warning: unused variable ‘p’ [-Wunused-variable]
+  628 |     int *p = new int[10];
+      |          ^
+test.cpp:631:9: warning: ‘a’ is used uninitialized [-Wuninitialized]
+  631 |     int b = a + 3;
+      |         ^
+test.cpp:629:9: note: ‘a’ was declared here
+  629 |     int a;
+      |         ^
+g++  test.o -o test
