@@ -6,7 +6,6 @@ print_usage() {
     cat <<EOF
 Usage: ${0##*/} [-i|--input-file FILE]
 
-If no input file is given, the script reads from standard input.
 EOF
 }
 
@@ -40,6 +39,11 @@ parse() {
                 ;;
         esac
     done
+
+    if [[ -n "$INPUT_FILE" && ! -f "$INPUT_FILE" ]]; then
+        echo "Error: Input file '$INPUT_FILE' does not exist." >&2
+        exit 1
+    fi
 }
 
 parse "$@"
